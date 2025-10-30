@@ -21,7 +21,7 @@ image = Image.open(image_buffer)
 image.show()
 
 #Change the existing text
-addr_object = label.get_label_object("TextObject1")
+addr_object = label.get_label_object("TextObject0")
 addr_object.update_data("Hello World")
 #Displays updated preview
 image_data = base64.b64decode(label.get_preview_label())
@@ -40,4 +40,5 @@ for p in printers:
         selected_printer = p
 
 #prints
+
 selected_printer.print_label(label)
