@@ -1,0 +1,25 @@
+
+%TODO: Create Official Name and such
+
+# DymoSDK for Python documentation
+
+Welcome to the documentation page for the DYMO SDK available for python. This package provides a wrapper around the existing C# SDK for DYMO Connect to facilitate interaction with DYMO printers.
+
+``` {toctree}
+---
+maxdepth: 2
+caption: Contents:
+---
+start.md
+labels.md
+printers.md
+apidocs/index
+license.md
+```
+
+## License
+The Python DYMO Connect SDK is available under the MIT License, which can be viewed here (#license.md).
+
+%## Support
+%The Python Wrapper was created by the DYMO Connect Team. 
+%TODO: ADD A LINK TO SUPPORT EMAIL AND SITES

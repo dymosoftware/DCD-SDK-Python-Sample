@@ -1,0 +1,288 @@
+:py:mod:`dymo_sdk`
+==================
+
+.. py:module:: dymo_sdk
+
+.. autodoc2-docstring:: dymo_sdk
+   :allowtitles:
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`LabelObjectType <dymo_sdk.LabelObjectType>`
+     - .. autodoc2-docstring:: dymo_sdk.LabelObjectType
+          :summary:
+   * - :py:obj:`LabelObject <dymo_sdk.LabelObject>`
+     - .. autodoc2-docstring:: dymo_sdk.LabelObject
+          :summary:
+   * - :py:obj:`DymoLabel <dymo_sdk.DymoLabel>`
+     - .. autodoc2-docstring:: dymo_sdk.DymoLabel
+          :summary:
+   * - :py:obj:`DymoPrinter <dymo_sdk.DymoPrinter>`
+     - .. autodoc2-docstring:: dymo_sdk.DymoPrinter
+          :summary:
+
+Functions
+~~~~~~~~~
+
+.. list-table::
+   :class: autosummary longtable
+   :align: left
+
+   * - :py:obj:`get_printers <dymo_sdk.get_printers>`
+     - .. autodoc2-docstring:: dymo_sdk.get_printers
+          :summary:
+   * - :py:obj:`print_label <dymo_sdk.print_label>`
+     - .. autodoc2-docstring:: dymo_sdk.print_label
+          :summary:
+   * - :py:obj:`is_roll_status_supported <dymo_sdk.is_roll_status_supported>`
+     - .. autodoc2-docstring:: dymo_sdk.is_roll_status_supported
+          :summary:
+   * - :py:obj:`get_num_labels_in_printer <dymo_sdk.get_num_labels_in_printer>`
+     - .. autodoc2-docstring:: dymo_sdk.get_num_labels_in_printer
+          :summary:
+   * - :py:obj:`refresh_printer <dymo_sdk.refresh_printer>`
+     - .. autodoc2-docstring:: dymo_sdk.refresh_printer
+          :summary:
+
+API
+~~~
+
+.. py:class:: LabelObjectType(*args, **kwds)
+   :canonical: dymo_sdk.LabelObjectType
+
+   Bases: :py:obj:`enum.Enum`
+
+   .. autodoc2-docstring:: dymo_sdk.LabelObjectType
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: dymo_sdk.LabelObjectType.__init__
+
+   .. py:attribute:: TEXT
+      :canonical: dymo_sdk.LabelObjectType.TEXT
+      :value: 'auto(...)'
+
+      .. autodoc2-docstring:: dymo_sdk.LabelObjectType.TEXT
+
+   .. py:attribute:: ADDRESS
+      :canonical: dymo_sdk.LabelObjectType.ADDRESS
+      :value: 'auto(...)'
+
+      .. autodoc2-docstring:: dymo_sdk.LabelObjectType.ADDRESS
+
+   .. py:attribute:: COUNTER
+      :canonical: dymo_sdk.LabelObjectType.COUNTER
+      :value: 'auto(...)'
+
+      .. autodoc2-docstring:: dymo_sdk.LabelObjectType.COUNTER
+
+   .. py:attribute:: BARCODE
+      :canonical: dymo_sdk.LabelObjectType.BARCODE
+      :value: 'auto(...)'
+
+      .. autodoc2-docstring:: dymo_sdk.LabelObjectType.BARCODE
+
+   .. py:attribute:: QRCODE
+      :canonical: dymo_sdk.LabelObjectType.QRCODE
+      :value: 'auto(...)'
+
+      .. autodoc2-docstring:: dymo_sdk.LabelObjectType.QRCODE
+
+   .. py:attribute:: IMAGE
+      :canonical: dymo_sdk.LabelObjectType.IMAGE
+      :value: 'auto(...)'
+
+      .. autodoc2-docstring:: dymo_sdk.LabelObjectType.IMAGE
+
+   .. py:attribute:: SHAPE
+      :canonical: dymo_sdk.LabelObjectType.SHAPE
+      :value: 'auto(...)'
+
+      .. autodoc2-docstring:: dymo_sdk.LabelObjectType.SHAPE
+
+   .. py:attribute:: NONE
+      :canonical: dymo_sdk.LabelObjectType.NONE
+      :value: 'auto(...)'
+
+      .. autodoc2-docstring:: dymo_sdk.LabelObjectType.NONE
+
+   .. py:method:: name()
+      :canonical: dymo_sdk.LabelObjectType.name
+
+   .. py:method:: value()
+      :canonical: dymo_sdk.LabelObjectType.value
+
+.. py:class:: LabelObject(native_label_object, label)
+   :canonical: dymo_sdk.LabelObject
+
+   .. autodoc2-docstring:: dymo_sdk.LabelObject
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: dymo_sdk.LabelObject.__init__
+
+   .. py:property:: name
+      :canonical: dymo_sdk.LabelObject.name
+
+      .. autodoc2-docstring:: dymo_sdk.LabelObject.name
+
+   .. py:property:: data
+      :canonical: dymo_sdk.LabelObject.data
+
+      .. autodoc2-docstring:: dymo_sdk.LabelObject.data
+
+   .. py:method:: update_data(new_value: str)
+      :canonical: dymo_sdk.LabelObject.update_data
+
+      .. autodoc2-docstring:: dymo_sdk.LabelObject.update_data
+
+   .. py:method:: update_image_data_from_file(filepath: str)
+      :canonical: dymo_sdk.LabelObject.update_image_data_from_file
+
+      .. autodoc2-docstring:: dymo_sdk.LabelObject.update_image_data_from_file
+
+.. py:class:: DymoLabel(*, filepath: str = '', xml: str = '')
+   :canonical: dymo_sdk.DymoLabel
+
+   .. autodoc2-docstring:: dymo_sdk.DymoLabel
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: dymo_sdk.DymoLabel.__init__
+
+   .. py:method:: load_label_from_xml(xml: str)
+      :canonical: dymo_sdk.DymoLabel.load_label_from_xml
+
+      .. autodoc2-docstring:: dymo_sdk.DymoLabel.load_label_from_xml
+
+   .. py:method:: load_label_from_file(filepath: str)
+      :canonical: dymo_sdk.DymoLabel.load_label_from_file
+
+      .. autodoc2-docstring:: dymo_sdk.DymoLabel.load_label_from_file
+
+   .. py:method:: get_label_objects()
+      :canonical: dymo_sdk.DymoLabel.get_label_objects
+
+      .. autodoc2-docstring:: dymo_sdk.DymoLabel.get_label_objects
+
+   .. py:method:: get_label_object(obj_name: str)
+      :canonical: dymo_sdk.DymoLabel.get_label_object
+
+      .. autodoc2-docstring:: dymo_sdk.DymoLabel.get_label_object
+
+   .. py:method:: update_label_object(label_obj: dymo_sdk.LabelObject, new_value: str)
+      :canonical: dymo_sdk.DymoLabel.update_label_object
+
+      .. autodoc2-docstring:: dymo_sdk.DymoLabel.update_label_object
+
+   .. py:method:: get_preview_label() -> str
+      :canonical: dymo_sdk.DymoLabel.get_preview_label
+
+      .. autodoc2-docstring:: dymo_sdk.DymoLabel.get_preview_label
+
+   .. py:method:: update_image_object_from_file(label_obj: dymo_sdk.LabelObject | str, filepath: str)
+      :canonical: dymo_sdk.DymoLabel.update_image_object_from_file
+
+      .. autodoc2-docstring:: dymo_sdk.DymoLabel.update_image_object_from_file
+
+   .. py:method:: save(filepath: str)
+      :canonical: dymo_sdk.DymoLabel.save
+
+      .. autodoc2-docstring:: dymo_sdk.DymoLabel.save
+
+.. py:class:: DymoPrinter(native)
+   :canonical: dymo_sdk.DymoPrinter
+
+   .. autodoc2-docstring:: dymo_sdk.DymoPrinter
+
+   .. rubric:: Initialization
+
+   .. autodoc2-docstring:: dymo_sdk.DymoPrinter.__init__
+
+   .. py:property:: name
+      :canonical: dymo_sdk.DymoPrinter.name
+
+      .. autodoc2-docstring:: dymo_sdk.DymoPrinter.name
+
+   .. py:property:: driver_name
+      :canonical: dymo_sdk.DymoPrinter.driver_name
+
+      .. autodoc2-docstring:: dymo_sdk.DymoPrinter.driver_name
+
+   .. py:property:: is_twin_turbo
+      :canonical: dymo_sdk.DymoPrinter.is_twin_turbo
+
+      .. autodoc2-docstring:: dymo_sdk.DymoPrinter.is_twin_turbo
+
+   .. py:property:: is_local
+      :canonical: dymo_sdk.DymoPrinter.is_local
+
+      .. autodoc2-docstring:: dymo_sdk.DymoPrinter.is_local
+
+   .. py:property:: is_connected
+      :canonical: dymo_sdk.DymoPrinter.is_connected
+
+      .. autodoc2-docstring:: dymo_sdk.DymoPrinter.is_connected
+
+   .. py:property:: is_auto_cut_supported
+      :canonical: dymo_sdk.DymoPrinter.is_auto_cut_supported
+
+      .. autodoc2-docstring:: dymo_sdk.DymoPrinter.is_auto_cut_supported
+
+   .. py:property:: printer_type
+      :canonical: dymo_sdk.DymoPrinter.printer_type
+
+      .. autodoc2-docstring:: dymo_sdk.DymoPrinter.printer_type
+
+   .. py:method:: is_roll_status_supported() -> bool
+      :canonical: dymo_sdk.DymoPrinter.is_roll_status_supported
+
+      .. autodoc2-docstring:: dymo_sdk.DymoPrinter.is_roll_status_supported
+
+   .. py:method:: get_num_labels_in_printer() -> int
+      :canonical: dymo_sdk.DymoPrinter.get_num_labels_in_printer
+
+      .. autodoc2-docstring:: dymo_sdk.DymoPrinter.get_num_labels_in_printer
+
+   .. py:method:: print_label(label: dymo_sdk.DymoLabel, copies: int = 1, collate: bool = False, mirror: bool = False, roll_selected: int = 0, chain_marks: bool = False, barcode_graphics_quality: bool = False)
+      :canonical: dymo_sdk.DymoPrinter.print_label
+
+      .. autodoc2-docstring:: dymo_sdk.DymoPrinter.print_label
+
+   .. py:method:: refresh_connection()
+      :canonical: dymo_sdk.DymoPrinter.refresh_connection
+
+      .. autodoc2-docstring:: dymo_sdk.DymoPrinter.refresh_connection
+
+.. py:function:: get_printers() -> list[dymo_sdk.DymoPrinter]
+   :canonical: dymo_sdk.get_printers
+
+   .. autodoc2-docstring:: dymo_sdk.get_printers
+
+.. py:function:: print_label(label: dymo_sdk.DymoLabel, printer: dymo_sdk.DymoPrinter | str, copies: int = 1, collate: bool = False, mirror: bool = False, roll_selected: int = 0, chain_marks: bool = False, barcode_graphics_quality: bool = False)
+   :canonical: dymo_sdk.print_label
+
+   .. autodoc2-docstring:: dymo_sdk.print_label
+
+.. py:function:: is_roll_status_supported(printer_name: str)
+   :canonical: dymo_sdk.is_roll_status_supported
+
+   .. autodoc2-docstring:: dymo_sdk.is_roll_status_supported
+
+.. py:function:: get_num_labels_in_printer(printer_name: str)
+   :canonical: dymo_sdk.get_num_labels_in_printer
+
+   .. autodoc2-docstring:: dymo_sdk.get_num_labels_in_printer
+
+.. py:function:: refresh_printer(printer_name: str)
+   :canonical: dymo_sdk.refresh_printer
+
+   .. autodoc2-docstring:: dymo_sdk.refresh_printer
