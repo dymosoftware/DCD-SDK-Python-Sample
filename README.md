@@ -33,4 +33,4 @@ for p in printers:
 #print label
 selected_printer.print_label(label)
 ```
-More information can be found via our documentation: <INSERT LINK HERE>
+More information can be found via our documentation: https://dymosoftware.github.io/DCD-SDK-Python-Sample/
