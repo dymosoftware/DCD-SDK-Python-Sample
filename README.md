@@ -4,7 +4,7 @@
 > Note that this is a beta version and may be unstable. Please report issues using this repository!
 
 ## Installation
-To use the SDK you will need a .NET Desktop Runtime, which can be downloaded here: <https://dotnet.microsoft.com/en-us/download/dotnet/8.0>. You should also install DYMO Connect which should install any drivers you need and allow you to design the label files necessary, although DYMO Connect is not strictly necessary. DYMO Connect can be downloaded here: <https://www.dymo.com/support?cfid=user-guide>. 
+To use the SDK you will need a .NET Runtime, which can be downloaded here: <https://dotnet.microsoft.com/en-us/download/dotnet/8.0>. Please install the Desktop runtime if you are on Windows. You should also install DYMO Connect which should install any drivers you need and allow you to design the label files necessary, although DYMO Connect is not strictly necessary. DYMO Connect can be downloaded here: <https://www.dymo.com/support?cfid=user-guide>. 
 ```{warning} 
 Note that currently for MacOS only arm chips are supported. In addition, bluetooth devices may not currently be working on mac. Also, you must be running .net 8.0 for Mac.
 ```
