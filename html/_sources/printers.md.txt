@@ -1,0 +1,23 @@
+# Printers
+
+## DymoPrinter
+Printers are represented by the [DymoPrinter](#dymo_sdk.DymoPrinter) Object. However, you can also interact with printers by using functions from the package itself. For example, the following two code snippets will do the same thing:
+``` python
+import dymo_sdk as dsdk
+#...
+
+#previously_gotten_dymo_printer.name == "Printer Name"
+previously_gotten_dymo_printer.print_label(previously_loaded_label)
+
+#...
+```
+
+```python
+import dymo_sdk as dsdk
+#...
+
+dsdk.print_label(previously_loaded_label, "Printer Name")
+
+#...
+```
+The most basic usage for the printer is, obviously, to print labels, which can be done using print_label. The 550 printers also support being able to check the number of labels remaining. You can check if a printer supports roll status by using either [is_roll_status_supported](#dymo_sdk.DymoPrinter.is_roll_status_supported) on a printer instance, or by calling [dymo_sdk.is_roll_status_supported](#dymo_sdk.is_roll_status_supported) with the printer's name. This will return a [RollStatus](#dymo_sdk.RollStatus) object where you can get the number of labels, the SKU, etc. Note that this value will not automatically update after you call a print job, so we suggest manually storing the number of labels printed. If you would like this value updated, you may call [dymo_sdk.refresh_printer](#dymo_sdk.refresh_printer) or [dymo_sdk.DymoPrinter.refresh_connection](#dymo_sdk.DymoPrinter.refresh_connection) to refresh the connection to the printer. However, note that this is an asynchronous call and you may need to sleep for a small amount of time to fully refresh the printer.

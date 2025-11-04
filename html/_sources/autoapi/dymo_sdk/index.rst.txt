@@ -1,0 +1,233 @@
+dymo_sdk
+========
+
+.. py:module:: dymo_sdk
+
+.. autoapi-nested-parse::
+
+   Provides functionality for interacting with Dymo Labels
+
+   This package provides a python wrapper around the .NET SDK for DYMO Printers and Labels.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   dymo_sdk.LabelObject
+   dymo_sdk.DymoLabel
+   dymo_sdk.DymoPrinter
+   dymo_sdk.RollStatus
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   dymo_sdk.get_printers
+   dymo_sdk.print_label
+   dymo_sdk.is_roll_status_supported
+   dymo_sdk.refresh_printer
+   dymo_sdk.get_roll_status
+
+
+Package Contents
+----------------
+
+.. py:class:: LabelObject(native_label_object, label)
+
+   An object on a label, such as Text, Barcode, etc. Should not be explicitly constructed.
+
+   Attributes:
+       native: The native C# label object, should not be needed for the average user.
+       owner: The DymoLabel instance that this object is attached to.
+       object_type: The type of object this label is.
+
+
+   .. py:property:: name
+
+      The name of the label object.
+
+
+
+   .. py:method:: update_data(new_value: str)
+
+      Updates the current data using the new_value as a String.
+
+
+
+   .. py:method:: update_image_data_from_file(filepath: str)
+
+      If this object is an image object, updates the image data using the file provided.
+
+
+
+.. py:class:: DymoLabel(*, filepath: str = '', xml: str = '')
+
+   A Dymo Label object.
+
+   Attributes:
+       :native: The underlying DymoLabel object from C#.
+
+
+   .. py:method:: load_label_from_xml(xml: str)
+
+      Loads a label from an XML String.
+
+      Args:
+          :xml (str): An XML String describing a Dymo label.
+
+
+
+   .. py:method:: load_label_from_file(filepath: str)
+
+      Loads a label from a .dymo, .label, or .xml file.
+
+      Args:
+          :filepath (str): the path to the file
+
+
+
+   .. py:method:: get_label_objects()
+
+      Returns a list of LabelObjects on the Label.
+
+
+
+   .. py:method:: get_label_object(obj_name: str)
+
+      Returns the Label Object from the given obj_name, or none if it does not exist.
+
+
+
+   .. py:method:: update_label_object(label_obj: LabelObject, new_value: str)
+
+      Updates the given label object on this label with the new value.
+
+      Updates the label object of this label if found. If label_obj's owner is the same as this current label, then provides duplicate functionality of label_obj.update_data().
+
+
+
+   .. py:method:: get_preview_label() -> str
+
+      Returns a preview of the current label.
+
+      Returns the current label as an image by a base64 string. 
+
+
+
+   .. py:method:: update_image_object_from_file(label_obj: LabelObject | str, filepath: str)
+
+      Updates an image object using the given filepath.
+
+      Args:
+          :label_obj: Either LabelObject Instance or the name of such an instance.
+          :filepath (str): the path to the file.
+
+
+
+   .. py:method:: save(filepath: str)
+
+      Saves this label to the specified file path.
+
+
+
+.. py:class:: DymoPrinter(native)
+
+   A class representing Dymo Printers. Should not be constructed directly but instead found through get_printers().
+
+
+   .. py:method:: is_roll_status_supported() -> bool
+
+      Returns if this printer belongs to the 550 series.
+
+
+
+   .. py:method:: get_roll_status() -> RollStatus
+
+      Returns roll status.
+
+
+
+   .. py:method:: print_label(label: DymoLabel, copies: int = 1, collate: bool = False, mirror: bool = False, roll_selected: int = 0, chain_marks: bool = False, barcode_graphics_quality: bool = False)
+
+      Prints the given label on this printer
+
+      Args:
+          :label: A DymoLabel instance to print.
+          :copies: The number of copies to print.
+          :collate: Whether or not the print job should be collated.
+          :mirror: Whether or not the print job should be mirrored.
+          :roll_selected: On Twin Turbo 450 Printers you can specify which port to print out of. 0 is auto, and 1 is left, and 2 is right.
+          :chain_marks: On D1 Printers places markings between labels.
+          :barcode_graphics_quality: Enables higher quality printing to help ensure barcode quality. Can lead to slower print jobs.
+
+
+
+   .. py:method:: refresh_connection()
+
+      Refreshes the printer connection. 
+
+      Note that this is done asynchronously and we recommend sleeping for 0.1 seconds if the results are required immediately.
+
+
+
+.. py:class:: RollStatus(native)
+
+   A class that represents the roll status.
+
+   Attributes:
+       :sku: (str) the SKU of the roll.
+       :name: (str) the name of the roll.
+       :labels_remaining: (int) the number of labels remaining in the detected roll.
+       :RollStatus: (str) The status of the roll.
+
+
+.. py:function:: get_printers() -> list[DymoPrinter]
+
+   Returns a list of DymoPrinter objects.
+
+
+.. py:function:: print_label(label: DymoLabel, printer: DymoPrinter | str, copies: int = 1, collate: bool = False, mirror: bool = False, roll_selected: int = 0, chain_marks: bool = False, barcode_graphics_quality: bool = False)
+
+   Prints the given label on the specified printer asynchronously.
+
+   Args:
+       :label: A DymoLabel instance to print.
+       :printer: The DymoPrinter to print it from. Can be a DymoPrinter instance or just the name.
+       :copies: The number of copies to print.
+       :collate: Whether or not the print job should be collated.
+       :mirror: Whether or not the print job should be mirrored.
+       :roll_selected: On Twin Turbo 450 Printers you can specify which port to print out of. 0 is auto, and 1 is left, and 2 is right.
+       :chain_marks: On D1 Printers places markings between labels.
+       :barcode_graphics_quality: Enables higher quality printing to help ensure barcode quality. Can lead to slower print jobs.
+
+
+.. py:function:: is_roll_status_supported(printer_name: str) -> bool
+
+   Returns if the provided printer belongs to the 550 series.
+
+   Args:
+       :printer_name (str): The name of the printer.
+
+
+.. py:function:: refresh_printer(printer_name: str)
+
+   Refreshes the printer connection
+
+   Note that this is done asynchronously and we recommend sleeping for a small amount of time if the results are required immediately.
+
+
+.. py:function:: get_roll_status(printer_name: str) -> RollStatus
+
+   Returns the number of labels remaining.
+
+   Returns the number of labels remaining on the roll if rollstatus is supported. To update this number you must run refresh_connection() or refresh_printer().
+
+   Args:
+       :printer_name (str): The name of the printer.
+
+
